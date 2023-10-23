@@ -1,8 +1,94 @@
-Label {
-  margin:1 1;
-  width: 100%;
-  height: 100%;
-  background: $panel;
-  border: tall $primary;
-  content-align: center middle;
+Screen {
+    align: center top;
+}
+
+.small-container {
+    align: center middle;
+    width: 15%;
+}
+
+.medium-container {
+    align: center middle;
+    width: 40%;
+}
+
+.table-container {
+    align: center top;
+    width: 80%;
+}
+
+.form-container {
+    height: auto;
+    width: 100%;
+    padding: 1 0;
+}
+
+.submit-container {
+    align-horizontal: right;
+    height: auto;
+    width: 100%;
+    padding: 1 0;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+    text-style: bold;
+}
+
+.title-label {
+    width: 100%;
+    padding: 1 0;
+    text-align: center;
+}
+
+.title-list {
+    width: 100%;
+    height: auto;
+    margin: 2 8;
+}
+
+.title-screen {
+    align: center middle;
+}
+
+.form-input {
+    width: 68%;
+}
+
+.form-label {
+    height: 3;
+    content-align: right middle;
+    width: 30%;
+}
+
+.form-submit {
+    align: right middle;
+}
+
+.form-element {
+    margin-left: 2;
+}
+
+.form-dropdown-override {
+    width: 70%;
+}
+
+.form-selectionlist {
+    height: 12;
+    overflow-y: scroll;
+    width: 69%;
+}
+
+#submit-label {
+    padding-right: 2;
+    text-style: bold;
+}
+
+.text-success {
+    color: green;
+}
+
+.text-error {
+    color: red;
 }
