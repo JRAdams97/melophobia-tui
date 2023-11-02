@@ -2,9 +2,11 @@ from textual.app import App, ComposeResult
 from textual.containers import Vertical
 from textual.widgets import Footer, Label, ListView, Rule
 
+import melophobia.view.artist_delete_search
+import melophobia.view.artist_edit_form
 import melophobia.view.artist_form
 import melophobia.view.list_artists
-from melophobia.component.Labelitem import LabelItem
+from melophobia.component.label_item import LabelItem
 
 
 class Melophobia(App):
@@ -40,8 +42,10 @@ class Melophobia(App):
     def on_mount(self) -> None:
         self.install_screen(melophobia.view.list_artists.ListArtistsScreen(), name='list_artists')
         self.install_screen(melophobia.view.artist_form.ArtistFormScreen(), name='artist_form')
+        self.install_screen(
+            melophobia.view.artist_delete_search.ArtistDeleteSearchScreen(), name='artist_delete_search')
 
-    def on_list_view_selected(self, event: ListView.Selected):
+    def on_list_view_selected(self, event: ListView.Selected) -> None:
         if event.item.label == 'Artists':
             app.push_screen('list_artists')
 

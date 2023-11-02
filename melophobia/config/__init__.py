@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 DB_LOCATION = 'C:/sqlite/melophobia/melophobia.db'
 
 logging.basicConfig(filename='melophobia.log', encoding='utf-8', format='%(asctime)s %(levelname)s:%(message)s',
-                    level=logging.DEBUG)
+                    level=logging.WARNING)
 
 
 def db_init():

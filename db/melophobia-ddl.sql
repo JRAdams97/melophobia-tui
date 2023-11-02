@@ -305,7 +305,8 @@ INSERT INTO region (name, region_abbr, country_id) VALUES
   ('Berlin', 'BE', 6),
   ('Kantō', NULL, 7),
   ('Illinois', 'IL', 1),
-  ('California', 'CA', 1);
+  ('California', 'CA', 1),
+  ('Washington', 'WA', 1);
 
 INSERT INTO location (city, region_id) VALUES
   ('New York City', 1),
@@ -319,7 +320,8 @@ INSERT INTO location (city, region_id) VALUES
   ('Belleville', 8),
   ('Pasadena', 9),
   ('Stockton', 9),
-  ('Santa Monica', 9);
+  ('Santa Monica', 9),
+  ('Aberdeen', 10);
 
 INSERT INTO artist (name, formation_date, formation_location_id, disband_date, favourite, artist_type, isni) VALUES
   ('Wilco', '1994-00-00', 8, NULL, TRUE, 'Band', '0000 0001 1523 0122'),
@@ -337,7 +339,9 @@ INSERT INTO genre (name, origin_year, favourite) VALUES
   ('Slacker Rock', 1978, TRUE),
   ('Noise Rock', 1965, TRUE),
   ('Noise Pop', 1983, TRUE),
-  ('Indie Pop', 1978, TRUE);
+  ('Indie Pop', 1978, TRUE),
+  ('Grunge', 1984, TRUE),
+  ('Acoustic Rock', 1965, TRUE);
 
 INSERT INTO composer (name, birth_date, birth_location_id, death_date) VALUES
   ('Jeff Tweedy', '1967-08-25', 9, NULL),

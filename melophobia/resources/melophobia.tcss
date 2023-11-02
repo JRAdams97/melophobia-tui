@@ -2,6 +2,49 @@ Screen {
     align: center top;
 }
 
+Select {
+    border: wide $background;
+}
+
+ModalScreen {
+    align: center middle;
+}
+
+#dialog {
+    align: center middle;
+    grid-size: 2;
+    grid-gutter: 1 2;
+    grid-rows: 1fr 3;
+    padding: 0 1;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+.dialog-span {
+    column-span: 2;
+    height: 3;
+    content-align: center top;
+}
+
+.dialog-select {
+    height: 5;
+}
+
+.dialog-button {
+    width: 100%;
+}
+
+.dialog-header {
+    padding: 0 1;
+    text-style: bold;
+}
+
+.dialog-container {
+    align: center middle;
+    height: 12;
+    width: 25%;
+}
+
 .small-container {
     align: center middle;
     width: 15%;
@@ -21,6 +64,12 @@ Screen {
     height: auto;
     width: 100%;
     padding: 1 0;
+}
+
+.form-dropdown-container {
+    height: auto;
+    width: 100%;
+    padding-top: 1;
 }
 
 .submit-container {
@@ -62,6 +111,38 @@ Screen {
     width: 30%;
 }
 
+.form-label-alt {
+    height: 3;
+    content-align: right middle;
+    width: 29%;
+}
+
+.form-required-label {
+    height: 3;
+    color: $error;
+    content-align: center middle;
+    width: 1%;
+}
+
+.form-dropdown-required-label {
+    height: 5;
+    color: $error;
+    content-align: center middle;
+    width: 1%;
+}
+
+.form-dropdown-label {
+    height: 5;
+    content-align: right middle;
+    width: 30%;
+}
+
+.form-dropdown-label-alt {
+    height: 5;
+    content-align: right middle;
+    width: 29%;
+}
+
 .form-submit {
     align: right middle;
 }
@@ -70,14 +151,15 @@ Screen {
     margin-left: 2;
 }
 
-.form-dropdown-override {
-    width: 70%;
-}
-
 .form-selectionlist {
     height: 12;
     overflow-y: scroll;
     width: 69%;
+}
+
+.form-validation {
+    margin-right: 1;
+    text-align: right;
 }
 
 #submit-label {
@@ -86,9 +168,21 @@ Screen {
 }
 
 .text-success {
-    color: green;
+    color: $success;
 }
 
 .text-error {
-    color: red;
+    color: $error;
+}
+
+.dropdown-error {
+    border: wide $error;
+}
+
+#red {
+    background: red;
+}
+
+#green {
+    background: green;
 }

@@ -1,9 +1,7 @@
-from typing import get_args, Optional, List
-
+import melophobia.enum as enum
 from sqlalchemy import CHAR, Enum, String, Table, Column, ForeignKey
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-
-import melophobia.enum as enum
+from typing import get_args, Optional, List
 
 
 class Base(DeclarativeBase):
@@ -13,7 +11,7 @@ class Base(DeclarativeBase):
 # Association tables
 artist_genres = Table('artist_genres', Base.metadata,
                       Column('artist_id', ForeignKey('artist.artist_id')),
-                      Column('genre_id', ForeignKey('genre.genre_id')), )
+                      Column('genre_id', ForeignKey('genre.genre_id')),)
 
 
 # Base tables
@@ -25,7 +23,6 @@ class Country(Base):
     alpha_2_code: Mapped[str] = mapped_column(CHAR(2), unique=True)
     country_continent: Mapped[enum.Continent] = mapped_column(Enum(*get_args(enum.Continent), name='country_continent',
                                                                    create_constraint=True, validate_string=True))
-
     regions: Mapped[List["Region"]] = relationship(back_populates='country')
 
     def __repr__(self) -> str:
@@ -39,7 +36,6 @@ class Region(Base):
     name: Mapped[Optional[str]] = mapped_column()
     region_abbr: Mapped[Optional[str]] = mapped_column(String(30))
     country_id: Mapped[int] = mapped_column(ForeignKey("country.country_id"))
-
     country: Mapped["Country"] = relationship(back_populates='regions')
     locations: Mapped[List["Location"]] = relationship(back_populates='region')
 
@@ -53,7 +49,6 @@ class Location(Base):
     location_id: Mapped[int] = mapped_column(primary_key=True)
     city: Mapped[str] = mapped_column()
     region_id: Mapped[int] = mapped_column(ForeignKey('region.region_id'))
-
     region: Mapped["Region"] = relationship(back_populates='locations')
     artists: Mapped[List["Artist"]] = relationship(back_populates='formation_location')
 
@@ -79,6 +74,7 @@ class Artist(Base):
     artist_id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column()
     formation_date: Mapped[str] = mapped_column(CHAR(10), default='0000-00-00')
+    formation_location: Mapped["Location"] = relationship(back_populates='artists')
     formation_location_id: Mapped[int] = mapped_column(ForeignKey('location.location_id'))
     disband_date: Mapped[Optional[str]] = mapped_column(CHAR(10))
     favourite: Mapped[bool] = mapped_column(default=False)
@@ -86,8 +82,7 @@ class Artist(Base):
                                                               create_constraint=True, validate_string=True))
     isni: Mapped[Optional[str]] = mapped_column(CHAR(19), unique=True)
 
-    formation_location: Mapped["Location"] = relationship(back_populates='artists')
-    genres: Mapped[List[Genre]] = relationship(secondary=artist_genres)
+    genres: Mapped[List[Genre]] = relationship(secondary=artist_genres, order_by='Genre.name')
 
     def __repr__(self) -> str:
         return f"Artist(artist_id={self.artist_id!r}, name={self.name!r}, isni={self.isni!r})"

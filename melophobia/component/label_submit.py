@@ -2,7 +2,7 @@ from textual.reactive import reactive
 from textual.widgets import Static
 
 
-class SubmitLabel(Static):
+class LabelSubmit(Static):
     text = reactive('')
 
     def update_text(self, is_valid_form: bool) -> None:
